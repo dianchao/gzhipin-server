@@ -53,7 +53,6 @@ router.post('/register', function (req, res) {
         } else { // 没值(不存在)
             // 保存
             new UserModel({username, type, password: md5(password)}).save(function (error, user) {
-
                 // 生成一个cookie(userid: user._id), 并交给浏览器保存
                 res.cookie('userid', user._id, {maxAge: 1000 * 60 * 60 * 24})
                 // 返回包含user的json数据
